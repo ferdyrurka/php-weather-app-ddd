@@ -1,0 +1,33 @@
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.3/phpunit.xsd" bootstrap="vendor/autoload.php" beStrictAboutOutputDuringTests="true" beStrictAboutTodoAnnotatedTests="true" colors="true" verbose="true">
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
+        <env name="APP_ENV" value="test"/>
+        <env name="APP_DEBUG" value="1"/>
+        <env name="APP_SECRET" value="s$fasfasfaweasd"/>
+        <env name="SHELL_VERBOSITY" value="-1"/>
+    </php>
+    <testsuites>
+        <testsuite name="default">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>./src</directory>
+            <!--  Exclude directory and file  -->
+            <exclude>
+                <directory>./src/Domain/Exception</directory>
+                <directory>./src/Domain/Entity</directory>
+                <directory>./src/Domain/Repository</directory>
+                <directory>./src/Infrastructure/Repository</directory>
+                <directory>./src/UserInterface/Web/ViewObject</directory>
+                <directory>./src/Application/Factory</directory>
+                <file>./src/Kernel.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+    <listeners>
+        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+    </listeners>
+</phpunit>
