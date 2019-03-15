@@ -9,6 +9,7 @@ phpunit.xml
 .env
 composer.lock
 symfony.lock
+.phpunit.result.cache
 
 # Directories
 
