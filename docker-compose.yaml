@@ -3,10 +3,12 @@ version: '3'
 services:
   postgresql:
     image: postgres:11.1
+    env_file:
+      - .env
     environment:
-      - POSTGRES_PASSWORD=fJyNXE25NJ4kPDZJjgnadhAnfe9bSf
-      - POSTGRES_USER=cNvLaKQedPUBkCzR2im
-      - POSTGRES_DB=english-platform
+      - POSTGRES_PASSWORD=$DATABASE_PASS
+      - POSTGRES_USER=$DATABASE_USER
+      - POSTGRES_DB=$DATABASE_NAME
     volumes:
       - postgresqlData:/var/lib/postgresql/data
     networks:
