@@ -15,7 +15,7 @@ Prepare two REST endpoints in Symfony 4 using PHP 7.2 and share it on GitHub:
 
 ## Dilemmas
 
-1. First option is save ready data (in the format json) and city name and 
+1. First option is save ready data (array) and city name and 
    second option is save all data to columns and tables.
     * I choose first option because I don't anticipate further 
     development of the application. If this application would be continuously 
