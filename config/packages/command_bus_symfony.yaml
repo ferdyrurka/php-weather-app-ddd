@@ -1,0 +1,11 @@
+command_bus_symfony:
+
+  handler_prefix: 'CommandHandler'
+  query_handler_prefix: 'QueryHandler'
+
+  replace_command_namespace: true
+  replace_query_namespace: true
+
+  save_command_bus_log: false
+  save_query_bus_log: false
+
