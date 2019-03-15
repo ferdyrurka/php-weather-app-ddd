@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Tests\UserInterface\Web\Controller;
+namespace App\Tests\Unit\UserInterface\Web\Controller;
 
 use App\UserInterface\Web\Controller\HomeController;
 use PHPUnit\Framework\TestCase;
