@@ -9,4 +9,12 @@ namespace App\Domain\Exception;
  */
 class InvalidArgsException extends WeatherAppException
 {
+    /**
+     * InvalidArgsException constructor.
+     * @param string|null $message
+     */
+    public function __construct(?string $message = null)
+    {
+        parent::__construct($message, 409);
+    }
 }
