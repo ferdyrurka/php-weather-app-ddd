@@ -21,6 +21,44 @@ Prepare two REST endpoints in Symfony 4 using PHP 7.2 and share it on GitHub:
     development of the application. If this application would be continuously 
     developed and the API capabilities would be modified, I would choose the second option. 
 
+## Tests
+
+```bash
+cp phpunit.xml.dist phpunit.xml
+
+php vendor/bin/phpunit
+```
+
+## Install
+
+1. Clone this repository
+
+```bash
+git clone https://github.com/ferdyrurka/weather-app.git
+```
+
+2. Complete the variable in .env.dist and rename .env.dist file
+
+```bash
+cp .env.dist .env
+```
+
+3. Run docker 
+
+```bash
+docker-compose up -d
+```
+
+4. First endpoint found in the url: http://localhost/api/v1/get-current-weather/{cityName}
+ and using method HTTP GET
+ 
+ Example request: http://localhost/api/v1/get-current-weather/Kraków
+ 
+5. Second endpoint found in the url: http://localhost/api/v1/get-last-save-weather/{cityName}
+ and using method HTTP GET
+ 
+ Example request: http://localhost/api/v1/get-last-save-weather/Kraków
+ 
 ## License
 
 * None
