@@ -1,0 +1,16 @@
+# Ide
+
+.idea
+.vscode
+
+# Files
+
+phpunit.xml
+.env
+composer.lock
+symfony.lock
+
+# Directories
+
+/var/
+/vendor/
