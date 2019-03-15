@@ -32,6 +32,6 @@ class CreateWeatherFactory
     {
         $weather = new Weather();
         $weather->setCityName($this->data['name']);
-        $weather->setDataJson(\json_encode($this->data));
+        $weather->setDataJson($this->data);
     }
 }

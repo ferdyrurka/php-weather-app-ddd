@@ -22,14 +22,14 @@ class Weather
     private $id;
 
     /**
-     * @var string
-     * @ORM\Column(type="string")
+     * @var array
+     * @ORM\Column(type="array")
      */
-    private $dataJson;
+    private $data;
 
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", unique=true, length=64)
      */
     private $cityName;
 
@@ -42,19 +42,19 @@ class Weather
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getDataJson(): string
+    public function getData(): array
     {
-        return $this->dataJson;
+        return $this->data;
     }
 
     /**
-     * @param string $dataJson
+     * @param array $data
      */
-    public function setDataJson(string $dataJson): void
+    public function setData(array $data): void
     {
-        $this->dataJson = $dataJson;
+        $this->data = $data;
     }
 
     /**
