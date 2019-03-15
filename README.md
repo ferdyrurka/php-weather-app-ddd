@@ -1,5 +1,9 @@
 # Weather app
 
+[![Build Status](https://travis-ci.org/ferdyrurka/weather-app.svg?branch=master)](https://travis-ci.org/ferdyrurka/weather-app)
+
+[![Coverage Status](https://coveralls.io/repos/github/ferdyrurka/weather-app/badge.svg?branch=master)](https://coveralls.io/github/ferdyrurka/weather-app?branch=master)
+
 ## Task
 
 Prepare two REST endpoints in Symfony 4 using PHP 7.2 and share it on GitHub:
