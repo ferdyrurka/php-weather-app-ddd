@@ -6,10 +6,10 @@ namespace App\Domain\Repository;
 use App\Domain\Entity\Weather;
 
 /**
- * Interface WeatherRepository
+ * Interface WeatherRepositoryInterface
  * @package App\Domain\Repository
  */
-interface WeatherRepository
+interface WeatherRepositoryInterface
 {
     /**
      * @param string $cityName
