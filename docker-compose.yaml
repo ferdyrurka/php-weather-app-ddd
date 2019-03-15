@@ -11,7 +11,7 @@ services:
       - postgresqlData:/var/lib/postgresql/data
     networks:
       - database
-    container_name: 'wather-app_posgresql'
+    container_name: 'weather-app_posgresql'
 
   api:
     build:
@@ -25,7 +25,7 @@ services:
     networks:
       - database
       - front
-    container_name: 'wather-app-api'
+    container_name: 'weather-app-api'
 
 
 volumes:
