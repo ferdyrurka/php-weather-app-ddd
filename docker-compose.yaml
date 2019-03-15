@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  postgresql:
+    image: postgres:11.1
+    environment:
+      - POSTGRES_PASSWORD=fJyNXE25NJ4kPDZJjgnadhAnfe9bSf
+      - POSTGRES_USER=cNvLaKQedPUBkCzR2im
+      - POSTGRES_DB=english-platform
+    volumes:
+      - postgresqlData:/var/lib/postgresql/data
+    networks:
+      - database
+    container_name: 'wather-app_posgresql'
+
+  api:
+    build:
+      context: ./etc/infrastructure/apache2
+      dockerfile: apache2.Dockerfile
+    image: php7.2.16-apache
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 80:80
+    networks:
+      - database
+      - front
+    container_name: 'wather-app-api'
+
+
+volumes:
+  postgresqlData:
+    driver: local
+
+networks:
+  database:
+  front:
