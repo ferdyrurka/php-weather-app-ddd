@@ -15,7 +15,7 @@ class CityNameValidator implements ValidatorInterface
      */
     public static function validate($value): bool
     {
-        if (!preg_match('/^([A-ZĄĆĘŁŃÓŚŹŻ|a-ząćęłnóśźż]){1,64}$/', $value)) {
+        if (!preg_match('/^([A-ZĄĆĘŁŃÓŚŹŻ|a-ząćęłnóśźż|-]){1,64}$/', $value)) {
             return false;
         }
 
