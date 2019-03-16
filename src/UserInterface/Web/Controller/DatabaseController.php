@@ -8,7 +8,6 @@ use App\Domain\Exception\InvalidArgsException;
 use App\Domain\Validator\CityNameValidator;
 use Ferdyrurka\CommandBus\QueryBusInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,7 +22,7 @@ class DatabaseController extends AbstractController
      * @param string $cityName
      * @param QueryBusInterface $queryBus
      * @throws InvalidArgsException
-     * @return JsonResponse
+     * @return Response
      * @Route("/get-last-save-weather/{cityName}")
      */
     public function getLastSaveWeather(string $cityName, QueryBusInterface $queryBus): Response
