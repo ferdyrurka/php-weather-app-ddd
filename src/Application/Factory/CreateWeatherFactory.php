@@ -33,5 +33,7 @@ class CreateWeatherFactory
         $weather = new Weather();
         $weather->setCityName(strtolower($this->data['name']));
         $weather->setData($this->data);
+
+        return $weather;
     }
 }
