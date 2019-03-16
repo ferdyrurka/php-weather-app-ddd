@@ -18,6 +18,12 @@ interface WeatherRepositoryInterface
     public function getOneByCityName(string $cityName): Weather;
 
     /**
+     * @param string $cityName
+     * @return Weather|null
+     */
+    public function findOneByCityName(string $cityName): ?Weather;
+
+    /**
      * @param Weather $weather
      */
     public function save(Weather $weather): void;
