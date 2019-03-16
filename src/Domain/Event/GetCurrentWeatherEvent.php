@@ -14,24 +14,24 @@ class GetCurrentWeatherEvent extends Event
     public const NAME = 'get.current.weather';
 
     /**
-     * @var string
+     * @var array
      */
-    private $jsonData;
+    private $dataResponse;
 
     /**
      * GetCurrentWeatherEvent constructor.
-     * @param string $jsonData
+     * @param array $dataResponse
      */
-    public function __construct(string $jsonData)
+    public function __construct(array $dataResponse)
     {
-        $this->jsonData = $jsonData;
+        $this->dataResponse = $dataResponse;
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getJsonData(): string
+    public function getDataResponse(): array
     {
-        return $this->jsonData;
+        return $this->dataResponse;
     }
 }
