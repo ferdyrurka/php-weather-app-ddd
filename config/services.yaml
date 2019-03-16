@@ -38,9 +38,9 @@ services:
         public: true
         arguments:
             - '@GuzzleHttp\Client'
-            - '@Symfony\Component\EventDispatcher\EventDispatcher'
-            - '%env(OWM_API_KEY)'
-            -
+            - '@Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher'
+            - '%env(OWM_API_KEY)%'
+
     App\Domain\Command\SaveWeatherCommandHandler:
         public: true
         autowire: true
@@ -57,8 +57,8 @@ services:
         class: GuzzleHttp\Client
         public: true
 
-    Symfony\Component\EventDispatcher\EventDispatcher:
-        class: Symfony\Component\EventDispatcher\EventDispatcher
+    Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher:
+        class: Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher
         public: true
         autowire: true
 
