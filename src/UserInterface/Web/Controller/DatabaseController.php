@@ -28,6 +28,8 @@ class DatabaseController extends AbstractController
     public function getLastSaveWeather(string $cityName, QueryBusInterface $queryBus): JsonResponse
     {
         if (CityNameValidator::validate($cityName)) {
+            $cityName = strtolower($cityName);
+
             $getOneByCityNameQuery = new GetOneByCityNameQuery($cityName);
             $getOneByCityNameViewObject = $queryBus->handle($getOneByCityNameQuery);
 

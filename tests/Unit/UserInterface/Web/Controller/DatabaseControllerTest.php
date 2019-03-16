@@ -70,7 +70,7 @@ class DatabaseControllerTest extends TestCase
             ->withArgs(
                 function (object $query): bool {
                     if (!$query instanceof GetOneByCityNameQuery ||
-                        $query->getCityName() !== 'London'
+                        $query->getCityName() !== 'london'
                     ) {
                         return false;
                     }
