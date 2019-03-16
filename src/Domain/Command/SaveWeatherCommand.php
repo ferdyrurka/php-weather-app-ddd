@@ -14,22 +14,22 @@ class SaveWeatherCommand implements CommandInterface
     /**
      * @var string
      */
-    private $jsonData;
+    private $cityName;
 
     /**
      * SaveWeatherCommand constructor.
-     * @param string $jsonData
+     * @param string $cityName
      */
-    public function __construct(string $jsonData)
+    public function __construct(string $cityName)
     {
-        $this->jsonData = $jsonData;
+        $this->cityName = $cityName;
     }
 
     /**
      * @return string
      */
-    public function getJsonData(): string
+    public function getCityName(): string
     {
-        return $this->jsonData;
+        return $this->cityName;
     }
 }
