@@ -66,7 +66,7 @@ class GetCurrentWeatherCommandHandler implements HandlerInterface
     {
         try {
             $response = $this->client->get(
-                'https://samples.openweathermap.org/data/2.5/weather?q=' .
+                'https://api.openweathermap.org/data/2.5/weather?q=' .
                 $cityName . '&APPID=' . $this->OWMApiKey
             );
         } catch (ClientException $clientException) {

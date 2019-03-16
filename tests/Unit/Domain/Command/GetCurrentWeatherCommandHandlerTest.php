@@ -189,7 +189,7 @@ class GetCurrentWeatherCommandHandlerTest extends TestCase
      */
     private function validateUriClient(string $uri): bool
     {
-        if ($uri !== 'https://samples.openweathermap.org/data/2.5/weather?q=Warsaw&APPID=OWN_API_KEY_VALUE') {
+        if ($uri !== 'https://api.openweathermap.org/data/2.5/weather?q=Warsaw&APPID=OWN_API_KEY_VALUE') {
             return false;
         }
 
