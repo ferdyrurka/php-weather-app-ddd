@@ -140,50 +140,6 @@ class GetCurrentWeatherCommandHandlerTest extends TestCase
     }
 
     /**
-     * @test
-     */
-    public function handleCod404(): void
-    {
-        $response = Mockery::mock(ResponseInterface::class);
-        $response->shouldReceive('getBody')->once()->andReturn(
-            \json_encode(['cod' => 404, 'other' => 'value'])
-        );
-
-        $this->client->shouldReceive('get')->once()->andReturn($response)
-            ->withArgs(
-                function (string $uri): bool {
-                    return $this->validateUriClient($uri);
-                }
-            )
-        ;
-
-        $this->expectException(WeatherNotFoundException::class);
-        $this->getCurrentWeatherCommandHandler->handle($this->getCurrentWeatherCommand);
-    }
-
-    /**
-     * @test
-     */
-    public function handleCodUnknown(): void
-    {
-        $response = Mockery::mock(ResponseInterface::class);
-        $response->shouldReceive('getBody')->once()->andReturn(
-            \json_encode(['cod' => 401, 'other' => 'value'])
-        );
-
-        $this->client->shouldReceive('get')->once()->andReturn($response)
-            ->withArgs(
-                function (string $uri): bool {
-                    return $this->validateUriClient($uri);
-                }
-            )
-        ;
-
-        $this->expectException(ServerOWMException::class);
-        $this->getCurrentWeatherCommandHandler->handle($this->getCurrentWeatherCommand);
-    }
-
-    /**
      * @param string $uri
      * @return bool
      */

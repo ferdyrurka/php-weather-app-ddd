@@ -77,19 +77,6 @@ class GetCurrentWeatherCommandHandler implements HandlerInterface
             throw  new ServerOWMException('Server exception by OWM');
         }
 
-        $bodyArray = \json_decode((string) $response->getBody(), true);
-
-        switch ((int) $bodyArray['cod']) {
-            case 200:
-                break;
-            case 404:
-                throw new WeatherNotFoundException(
-                    'Current weather not found by city name: ' . $cityName
-                );
-            default:
-                throw  new ServerOWMException('Server exception by OWM');
-        }
-
-        return $bodyArray;
+        return \json_decode((string) $response->getBody(), true);
     }
 }
