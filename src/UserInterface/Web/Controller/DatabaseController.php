@@ -23,7 +23,7 @@ class DatabaseController extends AbstractController
      * @param QueryBusInterface $queryBus
      * @throws InvalidArgsException
      * @return Response
-     * @Route("/get-last-save-weather/{cityName}")
+     * @Route("/get-last-save-weather/{cityName}", methods={"GET"})
      */
     public function getLastSaveWeather(string $cityName, QueryBusInterface $queryBus): Response
     {
