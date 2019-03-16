@@ -9,6 +9,7 @@ use App\Domain\Validator\CityNameValidator;
 use Ferdyrurka\CommandBus\QueryBusInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -25,7 +26,7 @@ class DatabaseController extends AbstractController
      * @return JsonResponse
      * @Route("/get-last-save-weather/{cityName}")
      */
-    public function getLastSaveWeather(string $cityName, QueryBusInterface $queryBus): JsonResponse
+    public function getLastSaveWeather(string $cityName, QueryBusInterface $queryBus): Response
     {
         if (CityNameValidator::validate($cityName)) {
             $cityName = strtolower($cityName);
@@ -33,7 +34,11 @@ class DatabaseController extends AbstractController
             $getOneByCityNameQuery = new GetOneByCityNameQuery($cityName);
             $getOneByCityNameViewObject = $queryBus->handle($getOneByCityNameQuery);
 
-            return new JsonResponse($getOneByCityNameViewObject->getData());
+            return new Response(
+                \json_encode($getOneByCityNameViewObject->getData(), JSON_UNESCAPED_UNICODE),
+                200,
+                ['Content-Type' => 'application/json; charset=utf-8']
+            );
         }
 
         throw new InvalidArgsException('City name (' . $cityName . ') is invalid');
