@@ -17,13 +17,21 @@ class CreateWeatherFactory
     private $data;
 
     /**
+     * @var string
+     */
+    private $cityName;
+
+    /**
      * CreateWeatherFactory constructor.
      * @param array $data
+     * @param string $cityName
      */
-    public function __construct(array $data)
+    public function __construct(array $data, string $cityName)
     {
         $this->data = $data;
+        $this->cityName = $cityName;
     }
+
 
     /**
      * @return Weather
@@ -31,7 +39,7 @@ class CreateWeatherFactory
     public function getWeather(): Weather
     {
         $weather = new Weather();
-        $weather->setCityName(strtolower($this->data['name']));
+        $weather->setCityName($this->cityName);
         $weather->setData($this->data);
 
         return $weather;
