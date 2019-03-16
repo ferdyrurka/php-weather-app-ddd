@@ -26,6 +26,48 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    # Queries
+
     App\Application\Query\GetOneByCityNameQueryHandler:
+        public: true
+        autowire: true
+
+    # Commands
+
+    App\Domain\Command\GetCurrentWeatherCommandHandler:
+        public: true
+        arguments:
+            - '@GuzzleHttp\Client'
+            - '@Symfony\Component\EventDispatcher\EventDispatcher'
+            - '%env(OWM_API_KEY)'
+            -
+    App\Domain\Command\SaveWeatherCommandHandler:
+        public: true
+        autowire: true
+
+    # Events
+
+    App\Domain\Event\GetCurrentWeatherEventListener:
+        tags:
+            - { name: kernel.event_listener, event: get.current.weather }
+
+    # Other
+
+    GuzzleHttp\Client:
+        class: GuzzleHttp\Client
+        public: true
+
+    Symfony\Component\EventDispatcher\EventDispatcher:
+        class: Symfony\Component\EventDispatcher\EventDispatcher
+        public: true
+        autowire: true
+
+    Ferdyrurka\CommandBus\QueryBusInterface:
+        class: Ferdyrurka\CommandBus\QueryBus
+        public: true
+        autowire: true
+
+    Ferdyrurka\CommandBus\CommandBusInterface:
+        class: Ferdyrurka\CommandBus\CommandBus
         public: true
         autowire: true
