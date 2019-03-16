@@ -8,7 +8,6 @@ use App\UserInterface\Web\ViewObject\GetOneByCityNameViewObject;
 use Ferdyrurka\CommandBus\Query\Handler\QueryHandlerInterface;
 use Ferdyrurka\CommandBus\Query\QueryInterface;
 use Ferdyrurka\CommandBus\Query\ViewObject\ViewObjectInterface;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
 /**
  * Class GetOneByCityNameQueryHandler
@@ -16,8 +15,6 @@ use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
  */
 class GetOneByCityNameQueryHandler implements QueryHandlerInterface
 {
-    use MockeryPHPUnitIntegration;
-
     /**
      * @var WeatherRepositoryInterface
      */
