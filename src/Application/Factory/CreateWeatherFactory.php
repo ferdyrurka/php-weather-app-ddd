@@ -31,7 +31,7 @@ class CreateWeatherFactory
     public function getWeather(): Weather
     {
         $weather = new Weather();
-        $weather->setCityName($this->data['name']);
+        $weather->setCityName(strtolower($this->data['name']));
         $weather->setData($this->data);
     }
 }
