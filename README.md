@@ -43,7 +43,21 @@ git clone https://github.com/ferdyrurka/weather-app.git
 cp .env.dist .env
 ```
 
-3. Run docker 
+3. Create directories
+
+```bash
+mkdir var
+mkdir var/cahce
+chmod 777 var/cache
+```
+
+4. Composer
+
+```bash
+composer install
+```
+
+5. Run docker 
 
 ```bash
 docker-compose up -d
