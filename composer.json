@@ -24,7 +24,7 @@
     "doctrine/dbal": "2.9.*",
     "doctrine/doctrine-bundle": "1.10.*",
     "doctrine/orm": "2.6.*",
-    "ferdyrurka/command-bus-symfony-bundle": "0.0.*",
+    "ferdyrurka/command-bus-symfony-bundle": "0.0.4",
     "guzzlehttp/guzzle": "6.3.*"
   },
   "require-dev": {
