@@ -63,12 +63,12 @@ composer install
 docker-compose up -d
 ```
 
-4. First endpoint found in the url: http://localhost/api/v1/get-current-weather/{cityName}
+6. First endpoint found in the url: http://localhost/api/v1/get-current-weather/{cityName}
  and using method HTTP GET
  
  Example request: http://localhost/api/v1/get-current-weather/Kraków
  
-5. Second endpoint found in the url: http://localhost/api/v1/get-last-save-weather/{cityName}
+7. Second endpoint found in the url: http://localhost/api/v1/get-last-save-weather/{cityName}
  and using method HTTP GET
  
  Example request: http://localhost/api/v1/get-last-save-weather/Kraków
