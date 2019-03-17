@@ -47,7 +47,7 @@ cp .env.dist .env
 
 ```bash
 mkdir var
-mkdir var/cahce
+mkdir var/cache
 chmod 777 var/cache
 ```
 
