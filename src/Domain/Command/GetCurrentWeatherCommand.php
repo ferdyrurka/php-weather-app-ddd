@@ -8,6 +8,7 @@ use Ferdyrurka\CommandBus\Command\CommandInterface;
 /**
  * Class GetCurrentWeatherCommand
  * @package App\Domain\Command
+ * @codeCoverageIgnore
  */
 class GetCurrentWeatherCommand implements CommandInterface
 {

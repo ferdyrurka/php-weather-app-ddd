@@ -8,6 +8,7 @@ use Ferdyrurka\CommandBus\Query\QueryInterface;
 /**
  * Class GetOneByCityNameQuery
  * @package App\Application\Query
+ * @codeCoverageIgnore
  */
 class GetOneByCityNameQuery implements QueryInterface
 {
