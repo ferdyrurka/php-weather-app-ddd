@@ -42,7 +42,8 @@ git clone https://github.com/ferdyrurka/weather-app.git
 ```bash
 mkdir var
 mkdir var/cache
-chmod 777 -R var/cache
+mkdir var/cache/prod
+chmod 777 -R var
 ```
 
 3. Composer
