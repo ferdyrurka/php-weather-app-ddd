@@ -29,6 +29,7 @@
   },
   "require-dev": {
     "phpunit/php-code-coverage": "^7.0",
+    "php-coveralls/php-coveralls": "2.1.*",
     "phploc/phploc": "^4.0",
     "phpmd/phpmd" : "@stable",
     "phpstan/phpstan": "0.10.*",
