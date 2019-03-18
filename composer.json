@@ -47,7 +47,7 @@
   },
   "repositories": [
     {
-      "type": "vcs",
+      "type": "github",
       "url": "https://github.com/ferdyrurka/command-bus-symfony-bundle"
     }
   ],
