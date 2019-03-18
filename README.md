@@ -37,30 +37,31 @@ php vendor/bin/phpunit
 git clone https://github.com/ferdyrurka/weather-app.git
 ```
 
-2. Complete the variable in .env.dist and rename .env.dist file
-
-```bash
-cp .env.dist .env
-```
-
-3. Create directories
+2. Create directories
 
 ```bash
 mkdir var
 mkdir var/cache
-chmod 777 var/cache
+chmod 777 -R var/cache
 ```
 
-4. Composer
+3. Composer
 
 ```bash
-composer install
+composer update
+```
+
+4. Complete the variable in .env.dist and rename .env.dist file
+
+```bash
+cp .env.dist .env
 ```
 
 5. Run docker 
 
 ```bash
 docker-compose up -d
+docker container exec weather-app-api  php bin/console doctrine:schema:update --force
 ```
 
 6. First endpoint found in the url: http://localhost/api/v1/get-current-weather/{cityName}
