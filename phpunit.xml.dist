@@ -20,6 +20,7 @@
                 <directory>./src/Domain/Exception</directory>
                 <directory>./src/Domain/Entity</directory>
                 <directory>./src/Domain/Repository</directory>
+                <directory>./src/Domain/Event</directory>
                 <directory>./src/Infrastructure/Repository</directory>
                 <directory>./src/UserInterface/Web/ViewObject</directory>
                 <directory>./src/Application/Factory</directory>
