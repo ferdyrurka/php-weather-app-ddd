@@ -54,7 +54,7 @@ composer update
 4. Complete the variable in .env.dist and rename .env.dist file
 
 ```bash
-cp .env.dist .env
+cp .env.prod.dist .env
 ```
 
 5. Run docker 
