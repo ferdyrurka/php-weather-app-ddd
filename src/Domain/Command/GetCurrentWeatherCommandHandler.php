@@ -6,6 +6,7 @@ namespace App\Domain\Command;
 use App\Domain\Event\GetCurrentWeatherEvent;
 use App\Domain\Exception\ServerOWMException;
 use App\Domain\Exception\WeatherNotFoundException;
+use App\Domain\OWM\WeatherOWMRepositoryInterface;
 use App\Infrastructure\OWM\WeatherOWMRepository;
 use Ferdyrurka\CommandBus\Command\CommandInterface;
 use Ferdyrurka\CommandBus\Handler\HandlerInterface;
@@ -22,7 +23,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 class GetCurrentWeatherCommandHandler implements HandlerInterface
 {
     /**
-     * @var WeatherOWMRepository
+     * @var WeatherOWMRepositoryInterface
      */
     private $weatherOWMRepository;
 
@@ -33,10 +34,10 @@ class GetCurrentWeatherCommandHandler implements HandlerInterface
 
     /**
      * GetCurrentWeatherCommandHandler constructor.
-     * @param WeatherOWMRepository $WeatherOWMRepository
+     * @param WeatherOWMRepositoryInterface $WeatherOWMRepository
      * @param EventDispatcherInterface $eventDispatcher
      */
-    public function __construct(WeatherOWMRepository $WeatherOWMRepository, EventDispatcherInterface $eventDispatcher)
+    public function __construct(WeatherOWMRepositoryInterface $WeatherOWMRepository, EventDispatcherInterface $eventDispatcher)
     {
         $this->weatherOWMRepository = $WeatherOWMRepository;
         $this->eventDispatcher = $eventDispatcher;

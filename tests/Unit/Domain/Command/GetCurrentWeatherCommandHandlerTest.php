@@ -8,6 +8,7 @@ use App\Domain\Command\GetCurrentWeatherCommandHandler;
 use App\Domain\Event\GetCurrentWeatherEvent;
 use App\Domain\Exception\ServerOWMException;
 use App\Domain\Exception\WeatherNotFoundException;
+use App\Domain\OWM\WeatherOWMRepositoryInterface;
 use App\Infrastructure\OWM\WeatherOWMRepository;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
@@ -53,7 +54,7 @@ class GetCurrentWeatherCommandHandlerTest extends TestCase
     {
         $this->getCurrentWeatherCommand = Mockery::mock(GetCurrentWeatherCommand::class);
         $this->getCurrentWeatherCommand->shouldReceive('getCityName')->once()->andReturn('Warsaw');
-        $this->weatherOWMRepository = Mockery::mock(WeatherOWMRepository::class);
+        $this->weatherOWMRepository = Mockery::mock(WeatherOWMRepositoryInterface::class);
 
         $this->eventDispatcher = Mockery::mock(EventDispatcherInterface::class);
         $this->getCurrentWeatherCommandHandler = new GetCurrentWeatherCommandHandler(
