@@ -8,6 +8,7 @@ use App\Domain\Command\GetCurrentWeatherCommandHandler;
 use App\Domain\Event\GetCurrentWeatherEvent;
 use App\Domain\Exception\ServerOWMException;
 use App\Domain\Exception\WeatherNotFoundException;
+use App\Infrastructure\OWM\WeatherOWMRepository;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
@@ -26,14 +27,14 @@ class GetCurrentWeatherCommandHandlerTest extends TestCase
     use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
     /**
-     * @var Client
-     */
-    private $client;
-
-    /**
      * @var EventDispatcherInterface
      */
     private $eventDispatcher;
+
+    /**
+     * @var WeatherOWMRepository
+     */
+    private $weatherOWMRepository;
 
     /**
      * @var GetCurrentWeatherCommandHandler
@@ -52,33 +53,22 @@ class GetCurrentWeatherCommandHandlerTest extends TestCase
     {
         $this->getCurrentWeatherCommand = Mockery::mock(GetCurrentWeatherCommand::class);
         $this->getCurrentWeatherCommand->shouldReceive('getCityName')->once()->andReturn('Warsaw');
+        $this->weatherOWMRepository = Mockery::mock(WeatherOWMRepository::class);
 
-        $this->client = Mockery::mock(Client::class);
         $this->eventDispatcher = Mockery::mock(EventDispatcherInterface::class);
         $this->getCurrentWeatherCommandHandler = new GetCurrentWeatherCommandHandler(
-            $this->client,
-            $this->eventDispatcher,
-            'OWN_API_KEY_VALUE'
+            $this->weatherOWMRepository,
+            $this->eventDispatcher
         );
     }
-
 
     /**
      * @test
      */
     public function handleOk(): void
     {
-        $response = Mockery::mock(ResponseInterface::class);
-        $response->shouldReceive('getBody')->once()->andReturn(
-            \json_encode(['cod' => 200, 'other' => 'value'])
-        );
-
-        $this->client->shouldReceive('get')->once()->andReturn($response)
-            ->withArgs(
-                function (string $uri): bool {
-                    return $this->validateUriClient($uri);
-                }
-            )
+        $this->weatherOWMRepository->shouldReceive('getOneByCityName')->once()->andReturn(['result' => true])
+            ->withArgs(['Warsaw'])
         ;
 
         $this->eventDispatcher->shouldReceive('dispatch')->once()
@@ -86,69 +76,5 @@ class GetCurrentWeatherCommandHandlerTest extends TestCase
         ;
 
         $this->getCurrentWeatherCommandHandler->handle($this->getCurrentWeatherCommand);
-    }
-
-    /**
-     * @test
-     */
-    public function handleServerException(): void
-    {
-        $this->client->shouldReceive('get')->once()->andThrow(Mockery::mock(ServerException::class))
-            ->withArgs(
-                function (string $uri): bool {
-                    return $this->validateUriClient($uri);
-                }
-            )
-        ;
-
-        $this->expectException(ServerOWMException::class);
-        $this->getCurrentWeatherCommandHandler->handle($this->getCurrentWeatherCommand);
-    }
-
-    /**
-     * @test
-     */
-    public function handleRequestException(): void
-    {
-        $this->client->shouldReceive('get')->once()->andThrow(Mockery::mock(RequestException::class))
-            ->withArgs(
-                function (string $uri): bool {
-                    return $this->validateUriClient($uri);
-                }
-            )
-        ;
-
-        $this->expectException(ServerOWMException::class);
-        $this->getCurrentWeatherCommandHandler->handle($this->getCurrentWeatherCommand);
-    }
-
-    /**
-     * @test
-     */
-    public function handleClientException(): void
-    {
-        $this->client->shouldReceive('get')->once()->andThrow(Mockery::mock(ClientException::class))
-            ->withArgs(
-                function (string $uri): bool {
-                    return $this->validateUriClient($uri);
-                }
-            )
-        ;
-
-        $this->expectException(WeatherNotFoundException::class);
-        $this->getCurrentWeatherCommandHandler->handle($this->getCurrentWeatherCommand);
-    }
-
-    /**
-     * @param string $uri
-     * @return bool
-     */
-    private function validateUriClient(string $uri): bool
-    {
-        if ($uri !== 'https://api.openweathermap.org/data/2.5/weather?q=Warsaw&APPID=OWN_API_KEY_VALUE') {
-            return false;
-        }
-
-        return true;
     }
 }
