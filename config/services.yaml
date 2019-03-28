@@ -36,10 +36,7 @@ services:
 
     App\Domain\Command\GetCurrentWeatherCommandHandler:
         public: true
-        arguments:
-            - '@GuzzleHttp\Client'
-            - '@Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher'
-            - '%env(OWM_API_KEY)%'
+        autowire: true
 
     App\Domain\Command\SaveWeatherCommandHandler:
         public: true
@@ -52,6 +49,11 @@ services:
             - { name: kernel.event_listener, event: get.current.weather }
 
     # Other
+
+    App\Infrastructure\OWM\WeatherOWMRepository:
+        arguments:
+            - '@GuzzleHttp\Client'
+            - '%env(OWM_API_KEY)%'
 
     GuzzleHttp\Client:
         class: GuzzleHttp\Client
