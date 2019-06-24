@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\UserInterface\Web\Controller;
 
-use App\Application\Query\GetOneByCityNameQuery;
+use App\Application\Query\Database\GetOneByCityNameQuery;
 use App\Domain\Exception\InvalidArgsException;
 use App\Domain\Validator\CityNameValidator;
 use App\UserInterface\Web\Controller\DatabaseController;

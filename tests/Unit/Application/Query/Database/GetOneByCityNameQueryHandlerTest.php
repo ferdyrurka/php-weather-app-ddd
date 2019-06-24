@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Tests\Application\Query;
+namespace App\Tests\Application\Query\Database;
 
-use App\Application\Query\GetOneByCityNameQuery;
-use App\Application\Query\GetOneByCityNameQueryHandler;
+use App\Application\Query\Database\GetOneByCityNameQuery;
+use App\Application\Query\Database\GetOneByCityNameQueryHandler;
 use App\Domain\Entity\Weather;
 use App\Domain\Repository\WeatherRepositoryInterface;
 use App\UserInterface\Web\ViewObject\GetOneByCityNameViewObject;

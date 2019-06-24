@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Application\Query;
+namespace App\Application\Query\Database;
 
 use Ferdyrurka\CommandBus\Query\QueryInterface;
 
