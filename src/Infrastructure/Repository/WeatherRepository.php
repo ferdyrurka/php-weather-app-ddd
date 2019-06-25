@@ -51,7 +51,7 @@ class WeatherRepository extends ServiceEntityRepository implements WeatherReposi
      * @param string $cityName
      * @return Weather|null
      */
-    public function findOneByCityName(string $cityName): ?Weather
+    public function findOneByCityName(string $cityName): Weather
     {
         $weather = $this
             ->createQueryBuilder('p')
@@ -63,7 +63,9 @@ class WeatherRepository extends ServiceEntityRepository implements WeatherReposi
         ;
 
         if (empty($weather)) {
-            return null;
+            $weather = new Weather();
+            $weather->setCityName($cityName);
+            return $weather;
         }
 
         return $weather[0];

@@ -34,14 +34,7 @@ class SaveWeatherCommandHandler implements HandlerInterface
     public function handle(CommandInterface $command): void
     {
         $weather = $this->weatherRepository->findOneByCityName($command->getCityName());
-
-        if ($weather === null) {
-            $factory = new CreateWeatherFactory($command->getResponseData(), $command->getCityName());
-            $weather = $factory->getWeather();
-        } else {
-            $weather->setData($command->getResponseData());
-        }
-
+        $weather->setData($command->getResponseData());
         $this->weatherRepository->save($weather);
     }
 }

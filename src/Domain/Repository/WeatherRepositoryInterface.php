@@ -21,7 +21,7 @@ interface WeatherRepositoryInterface
      * @param string $cityName
      * @return Weather|null
      */
-    public function findOneByCityName(string $cityName): ?Weather;
+    public function findOneByCityName(string $cityName): Weather;
 
     /**
      * @param Weather $weather
