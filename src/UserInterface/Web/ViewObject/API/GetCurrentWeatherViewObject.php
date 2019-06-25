@@ -12,7 +12,7 @@ use Ferdyrurka\CommandBus\Query\ViewObject\ViewObjectInterface;
 class GetCurrentWeatherViewObject implements ViewObjectInterface
 {
     /**
-     * @var string
+     * @var array
      */
     private $data;
 
@@ -26,9 +26,9 @@ class GetCurrentWeatherViewObject implements ViewObjectInterface
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getData(): string
+    public function getData(): array
     {
         return $this->data;
     }
