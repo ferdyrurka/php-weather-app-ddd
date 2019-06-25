@@ -1,6 +1,6 @@
 # Weather app
 
-[![Build Status](https://travis-ci.org/ferdyrurka/weather-app.svg?branch=master)](https://travis-ci.org/ferdyrurka/weather-app)
+[![Build Status](https://travis-ci.org/ferdyrurka/php-weather-app-ddd.svg?branch=master)](https://travis-ci.org/ferdyrurka/php-weather-app-ddd)
 
 [![Coverage Status](https://coveralls.io/repos/github/ferdyrurka/weather-app/badge.svg?branch=master)](https://coveralls.io/github/ferdyrurka/weather-app?branch=master)
 
