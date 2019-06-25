@@ -14,30 +14,15 @@ class GetCurrentWeatherViewObject implements ViewObjectInterface
     /**
      * @var string
      */
-    private $cityName;
-
-    /**
-     * @var string
-     */
     private $data;
 
     /**
      * GetCurrentWeatherViewObject constructor.
-     * @param string $cityName
      * @param array $data
      */
-    public function __construct(string $cityName, array $data)
+    public function __construct(array $data)
     {
-        $this->cityName = $cityName;
         $this->data = $data;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCityName(): string
-    {
-        return $this->cityName;
     }
 
     /**

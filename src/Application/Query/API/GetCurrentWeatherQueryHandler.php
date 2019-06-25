@@ -38,7 +38,6 @@ class GetCurrentWeatherQueryHandler implements QueryHandlerInterface
         $weather = $this->weatherOWMRepository->getOneByCityName($query->getCityName());
 
         return new GetCurrentWeatherViewObject(
-            $query->getCityName(),
             $weather
         );
     }
