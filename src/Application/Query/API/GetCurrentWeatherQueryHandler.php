@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Domain\Command;
+namespace App\Application\Query\API;
 
 use App\Domain\OWM\WeatherOWMRepositoryInterface;
 use App\UserInterface\Web\ViewObject\API\GetCurrentWeatherViewObject;
