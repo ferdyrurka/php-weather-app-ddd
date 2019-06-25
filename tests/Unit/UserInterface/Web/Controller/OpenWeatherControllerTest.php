@@ -3,14 +3,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\UserInterface\Web\Controller;
 
-use App\Domain\Command\GetCurrentWeatherCommand;
+use App\Application\Query\API\GetCurrentWeatherQuery;
 use App\Domain\Command\SaveWeatherCommand;
-use App\Domain\Event\GetCurrentWeatherEventListener;
 use App\Domain\Exception\InvalidArgsException;
-use App\Domain\Validator\CityNameValidator;
 use App\UserInterface\Web\Controller\OpenWeatherController;
-use Ferdyrurka\CommandBus\Command\CommandInterface;
+use App\UserInterface\Web\ViewObject\API\GetCurrentWeatherViewObject;
 use Ferdyrurka\CommandBus\CommandBusInterface;
+use Ferdyrurka\CommandBus\QueryBus;
 use Mockery;
 use PHPUnit\Framework\TestCase;
 
@@ -41,14 +40,11 @@ class OpenWeatherControllerTest extends TestCase
      */
     public function getCurrentWeatherInvalidArgs(): void
     {
-        $cityNameValidator = Mockery::mock('alias:' . CityNameValidator::class);
-        $cityNameValidator->shouldReceive('validate')->once()->withArgs(['cityNameValue'])->andReturnFalse();
-
         $this->expectException(InvalidArgsException::class);
         $this->openWeatherController->getCurrentWeather(
-            'cityNameValue',
+            '&*&*&',
             Mockery::mock(CommandBusInterface::class),
-            Mockery::mock(GetCurrentWeatherEventListener::class)
+            Mockery::mock(QueryBus::class)
         );
     }
 
@@ -58,33 +54,20 @@ class OpenWeatherControllerTest extends TestCase
      */
     public function getCurrentWeatherOk(): void
     {
-        $cityNameValidator = Mockery::mock('alias:' . CityNameValidator::class);
-        $cityNameValidator->shouldReceive('validate')->once()->withArgs(['cityNameValue'])->andReturnTrue();
-
-        $getCurrentWeatherEventListener = Mockery::mock(GetCurrentWeatherEventListener::class);
-        $getCurrentWeatherEventListener->shouldReceive('getDataResponse')->twice()
-            ->andReturn(['data' => 'dataResponse'])
+        $commandBus = Mockery::mock(CommandBusInterface::class);
+        $commandBus->shouldReceive('handle')->once()
+            ->withArgs([SaveWeatherCommand::class])
         ;
 
-        $commandBus = Mockery::mock(CommandBusInterface::class);
-        $commandBus->shouldReceive('handle')->twice()
-            ->withArgs(
-                function (CommandInterface $command): bool {
-                    if (!$command instanceof SaveWeatherCommand &&
-                        !$command instanceof GetCurrentWeatherCommand
-                    ) {
-                        return false;
-                    }
-
-                    return true;
-                }
-            )
+        $queryBus = Mockery::mock(QueryBus::class);
+        $queryBus->shouldReceive('handle')->once()->withArgs([GetCurrentWeatherQuery::class])
+            ->andReturn(new GetCurrentWeatherViewObject(['data' => 'dataResponse']))
         ;
 
         $result = $this->openWeatherController->getCurrentWeather(
             'cityNameValue',
             $commandBus,
-            $getCurrentWeatherEventListener
+            $queryBus
         );
 
         $this->assertEquals('dataResponse', \json_decode($result->getContent(), true)['data']);
