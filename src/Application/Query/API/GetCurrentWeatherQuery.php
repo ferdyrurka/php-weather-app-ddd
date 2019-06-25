@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace App\Domain\Command;
 
-use Ferdyrurka\CommandBus\Command\CommandInterface;
+use Ferdyrurka\CommandBus\Query\QueryInterface;
 
 /**
  * Class GetCurrentWeatherCommand
  * @package App\Domain\Command
  * @codeCoverageIgnore
  */
-class GetCurrentWeatherCommand implements CommandInterface
+class GetCurrentWeatherQuery implements QueryInterface
 {
     /**
      * @var string
