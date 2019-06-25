@@ -5,9 +5,8 @@ namespace App\Tests\Unit\UserInterface\Web\Controller;
 
 use App\Application\Query\Database\GetOneByCityNameQuery;
 use App\Domain\Exception\InvalidArgsException;
-use App\Domain\Validator\CityNameValidator;
 use App\UserInterface\Web\Controller\DatabaseController;
-use App\UserInterface\Web\ViewObject\GetOneByCityNameViewObject;
+use App\UserInterface\Web\ViewObject\Database\GetOneByCityNameViewObject;
 use Ferdyrurka\CommandBus\QueryBusInterface;
 use Mockery;
 use PHPUnit\Framework\TestCase;
@@ -36,7 +35,6 @@ class DatabaseControllerTest extends TestCase
     protected function setUp(): void
     {
         $this->queryBus = Mockery::mock(QueryBusInterface::class);
-
         $this->databaseController = new DatabaseController();
     }
 
@@ -47,11 +45,8 @@ class DatabaseControllerTest extends TestCase
      */
     public function getLastSaveWeatherInvalidData(): void
     {
-        $cityNameValidator = Mockery::mock('alias:' . CityNameValidator::class);
-        $cityNameValidator->shouldReceive('validate')->withArgs(['London'])->once()->andReturnFalse();
-
         $this->expectException(InvalidArgsException::class);
-        $this->databaseController->getLastSaveWeather('London', $this->queryBus);
+        $this->databaseController->getLastSaveWeather('&*&', $this->queryBus);
     }
 
     /**
@@ -60,11 +55,7 @@ class DatabaseControllerTest extends TestCase
      */
     public function getLastSaveWeatherOk(): void
     {
-        $cityNameValidator = Mockery::mock('alias:' . CityNameValidator::class);
-        $cityNameValidator->shouldReceive('validate')->withArgs(['London'])->once()->andReturnTrue();
-
-        $viewObject = Mockery::mock(GetOneByCityNameViewObject::class);
-        $viewObject->shouldReceive('getData')->once()->andReturn(['data' => 'data_from_database']);
+        $viewObject = new GetOneByCityNameViewObject(['data' => 'data_from_database']);
 
         $this->queryBus->shouldReceive('handle')->once()->andReturn($viewObject)
             ->withArgs(
