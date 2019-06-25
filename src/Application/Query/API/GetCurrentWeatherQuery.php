@@ -15,7 +15,7 @@ class GetCurrentWeatherQuery implements QueryInterface
     /**
      * @var string
      */
-    private $cityName;
+    private string $cityName;
 
     /**
      * GetCurrentWeatherCommand constructor.

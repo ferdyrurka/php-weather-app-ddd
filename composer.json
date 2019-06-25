@@ -9,7 +9,7 @@
     }
   ],
   "require": {
-    "php": "^7.2",
+    "php": "^7.4",
     "ext-ctype": "*",
     "ext-iconv": "*",
     "ext-json": "*",
@@ -17,7 +17,6 @@
     "symfony/console": "4.*.*",
     "symfony/flex": "^1.1",
     "symfony/framework-bundle": "4.*.*",
-    "symfony/security-bundle": "4.*.*",
     "symfony/serializer-pack": "1.0.*",
     "symfony/yaml": "4.*.*",
     "symfony/dotenv": "*",

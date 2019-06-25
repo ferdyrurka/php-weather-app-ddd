@@ -15,7 +15,7 @@ class GetOneByCityNameQuery implements QueryInterface
     /**
      * @var string
      */
-    private $cityName;
+    private string $cityName;
 
     /**
      * GetOneByCityNameQuery constructor.

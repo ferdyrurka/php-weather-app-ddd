@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Application\Query\Database;
 
 use App\Domain\Repository\WeatherRepositoryInterface;
-use App\UserInterface\Web\ViewObject\GetOneByCityNameViewObject;
+use App\UserInterface\Web\ViewObject\Database\GetOneByCityNameViewObject;
 use Ferdyrurka\CommandBus\Query\Handler\QueryHandlerInterface;
 use Ferdyrurka\CommandBus\Query\QueryInterface;
 use Ferdyrurka\CommandBus\Query\ViewObject\ViewObjectInterface;
@@ -18,7 +18,7 @@ class GetOneByCityNameQueryHandler implements QueryHandlerInterface
     /**
      * @var WeatherRepositoryInterface
      */
-    private $weatherRepository;
+    private WeatherRepositoryInterface $weatherRepository;
 
     /**
      * GetOneByCityNameQueryHandler constructor.

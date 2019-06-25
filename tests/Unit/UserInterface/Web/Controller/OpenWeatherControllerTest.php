@@ -24,7 +24,7 @@ class OpenWeatherControllerTest extends TestCase
     /**
      * @var OpenWeatherController
      */
-    private $openWeatherController;
+    private OpenWeatherController $openWeatherController;
 
     /**
      *

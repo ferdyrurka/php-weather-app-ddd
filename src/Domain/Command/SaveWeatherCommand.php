@@ -15,12 +15,12 @@ class SaveWeatherCommand implements CommandInterface
     /**
      * @var string
      */
-    private $cityName;
+    private string $cityName;
 
     /**
      * @var array
      */
-    private $responseData;
+    private array $responseData;
 
     /**
      * SaveWeatherCommand constructor.

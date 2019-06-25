@@ -14,7 +14,7 @@ class GetCurrentWeatherViewObject implements ViewObjectInterface
     /**
      * @var array
      */
-    private $data;
+    private array $data;
 
     /**
      * GetCurrentWeatherViewObject constructor.

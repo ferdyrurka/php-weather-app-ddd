@@ -19,19 +19,19 @@ class Weather
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", length=11)
      */
-    private $id;
+    private int $id;
 
     /**
      * @var array
      * @ORM\Column(type="array")
      */
-    private $data;
+    private array $data;
 
     /**
      * @var string
      * @ORM\Column(type="string", unique=true, length=64)
      */
-    private $cityName;
+    private string $cityName;
 
     /**
      * @return int

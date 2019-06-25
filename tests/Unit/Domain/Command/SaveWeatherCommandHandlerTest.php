@@ -22,17 +22,17 @@ class SaveWeatherCommandHandlerTest extends TestCase
     /**
      * @var WeatherRepositoryInterface
      */
-    private $weatherRepository;
+    private WeatherRepositoryInterface $weatherRepository;
 
     /**
      * @var SaveWeatherCommandHandler
      */
-    private $saveWeatherCommandHandler;
+    private SaveWeatherCommandHandler $saveWeatherCommandHandler;
 
     /**
      * @var SaveWeatherCommand
      */
-    private $saveWeatherCommand;
+    private SaveWeatherCommand $saveWeatherCommand;
 
     /**
      *

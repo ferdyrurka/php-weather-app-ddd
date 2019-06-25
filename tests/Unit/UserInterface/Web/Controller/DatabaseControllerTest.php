@@ -22,12 +22,12 @@ class DatabaseControllerTest extends TestCase
     /**
      * @var DatabaseController
      */
-    private $databaseController;
+    private DatabaseController $databaseController;
 
     /**
      * @var QueryBusInterface
      */
-    private $queryBus;
+    private QueryBusInterface $queryBus;
 
     /**
      *

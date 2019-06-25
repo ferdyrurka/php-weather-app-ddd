@@ -16,7 +16,7 @@ class SaveWeatherCommandHandler implements HandlerInterface
     /**
      * @var WeatherRepositoryInterface
      */
-    private $weatherRepository;
+    private WeatherRepositoryInterface $weatherRepository;
 
     /**
      * SaveWeatherCommandHandler constructor.

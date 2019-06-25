@@ -25,12 +25,12 @@ class WeatherOWMRepositoryTest extends TestCase
     /**
      * @var Client
      */
-    private $client;
+    private Client $client;
 
     /**
      * @var WeatherOWMRepository
      */
-    private $owmRepository;
+    private WeatherOWMRepository $owmRepository;
 
     /**
      *

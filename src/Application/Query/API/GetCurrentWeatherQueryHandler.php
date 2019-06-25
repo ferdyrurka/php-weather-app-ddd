@@ -18,7 +18,7 @@ class GetCurrentWeatherQueryHandler implements QueryHandlerInterface
     /**
      * @var WeatherOWMRepositoryInterface
      */
-    private $weatherOWMRepository;
+    private WeatherOWMRepositoryInterface $weatherOWMRepository;
 
     /**
      * GetCurrentWeatherCommandHandler constructor.

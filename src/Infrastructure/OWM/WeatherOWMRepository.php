@@ -20,12 +20,12 @@ class WeatherOWMRepository implements WeatherOWMRepositoryInterface
     /**
      * @var Client
      */
-    private $client;
+    private Client $client;
 
     /**
      * @var string
      */
-    private $OWMApiKey;
+    private string $OWMApiKey;
 
     /**
      * WeatherOWMRepository constructor.

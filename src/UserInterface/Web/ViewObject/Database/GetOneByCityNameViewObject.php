@@ -14,7 +14,7 @@ class GetOneByCityNameViewObject implements ViewObjectInterface
     /**
      * @var array
      */
-    private $data;
+    private array $data;
 
     /**
      * GetOneByCityNameViewObject constructor.

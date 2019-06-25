@@ -15,7 +15,7 @@ class HomeControllerTest extends TestCase
     /**
      * @var HomeController
      */
-    private $homeController;
+    private HomeController $homeController;
 
     /**
      *
