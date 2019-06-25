@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Command;
 
-use App\Application\Factory\CreateWeatherFactory;
 use App\Domain\Repository\WeatherRepositoryInterface;
 use Ferdyrurka\CommandBus\Command\CommandInterface;
 use Ferdyrurka\CommandBus\Handler\HandlerInterface;
