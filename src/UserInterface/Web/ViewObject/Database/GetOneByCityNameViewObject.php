@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\UserInterface\Web\ViewObject;
+namespace App\UserInterface\Web\ViewObject\Database;
 
 use Ferdyrurka\CommandBus\Query\ViewObject\ViewObjectInterface;
 
